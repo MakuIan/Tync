@@ -1,1 +1,0 @@
-// Berechnet 'EndTime - Now'
