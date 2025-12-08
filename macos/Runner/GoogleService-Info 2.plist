@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>145409309228-bi7qf3adth7gor2gbm071sprmathm6eu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.145409309228-bi7qf3adth7gor2gbm071sprmathm6eu</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>145409309228-fe5mt18ri95nt9sdd5pjgbtmkit1s3fq.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDltQZkCs_bLx8oc0p4lQM0mlPM-HB9J2g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>145409309228</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.tync</string>
+	<key>PROJECT_ID</key>
+	<string>tync-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tync-app.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:145409309228:ios:815ccdc5d746897a8b6f89</string>
+</dict>
+</plist>

@@ -1,0 +1,1 @@
+// Berechnet 'Now - StartTime'
