@@ -46,6 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '145409309228',
     projectId: 'tync-app',
     authDomain: 'tync-app.firebaseapp.com',
+    databaseURL: 'https://tync-app-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'tync-app.firebasestorage.app',
     measurementId: 'G-YSKHYDWZYM',
   );
@@ -55,6 +56,7 @@ class DefaultFirebaseOptions {
     appId: '1:145409309228:android:e8237fd15672f2528b6f89',
     messagingSenderId: '145409309228',
     projectId: 'tync-app',
+    databaseURL: 'https://tync-app-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'tync-app.firebasestorage.app',
   );
 
@@ -63,7 +65,10 @@ class DefaultFirebaseOptions {
     appId: '1:145409309228:ios:815ccdc5d746897a8b6f89',
     messagingSenderId: '145409309228',
     projectId: 'tync-app',
+    databaseURL: 'https://tync-app-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'tync-app.firebasestorage.app',
+    androidClientId: '145409309228-fe5mt18ri95nt9sdd5pjgbtmkit1s3fq.apps.googleusercontent.com',
+    iosClientId: '145409309228-bi7qf3adth7gor2gbm071sprmathm6eu.apps.googleusercontent.com',
     iosBundleId: 'com.example.tync',
   );
 
@@ -72,7 +77,10 @@ class DefaultFirebaseOptions {
     appId: '1:145409309228:ios:815ccdc5d746897a8b6f89',
     messagingSenderId: '145409309228',
     projectId: 'tync-app',
+    databaseURL: 'https://tync-app-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'tync-app.firebasestorage.app',
+    androidClientId: '145409309228-fe5mt18ri95nt9sdd5pjgbtmkit1s3fq.apps.googleusercontent.com',
+    iosClientId: '145409309228-bi7qf3adth7gor2gbm071sprmathm6eu.apps.googleusercontent.com',
     iosBundleId: 'com.example.tync',
   );
 
@@ -82,7 +90,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '145409309228',
     projectId: 'tync-app',
     authDomain: 'tync-app.firebaseapp.com',
+    databaseURL: 'https://tync-app-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'tync-app.firebasestorage.app',
     measurementId: 'G-HDJC0VCEQX',
   );
+
 }

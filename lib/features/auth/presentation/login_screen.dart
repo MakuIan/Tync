@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tync/core/constants/app_colors.dart';
-import 'package:tync/core/constants/app_sizes.dart';
 import 'package:tync/core/constants/app_text_styles.dart';
 import 'package:tync/features/auth/application/auth_controller.dart';
 
@@ -29,7 +28,7 @@ class LoginScreen extends ConsumerWidget {
       backgroundColor: AppColors.background,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(AppSizes.p24),
+          padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -38,9 +37,9 @@ class LoginScreen extends ConsumerWidget {
                 size: 80,
                 color: AppColors.primary,
               ),
-              const SizedBox(height: AppSizes.p24),
+              const SizedBox(height: 24),
               const Text('Welcome to Tync', style: AppTextStyles.h1),
-              const SizedBox(height: AppSizes.p24),
+              const SizedBox(height: 24),
               const Text(
                 'Synchonize time to all devices',
                 textAlign: TextAlign.center,
@@ -66,7 +65,7 @@ class LoginScreen extends ConsumerWidget {
                     elevation: 2,
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppSizes.r12),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                 ),

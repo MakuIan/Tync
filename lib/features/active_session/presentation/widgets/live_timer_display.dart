@@ -10,6 +10,7 @@ class LiveTimerDisplay extends StatefulWidget {
   final bool isCountDown;
 
   const LiveTimerDisplay({
+    super.key,
     required this.targetTime,
     required this.isRunning,
     required this.isCountDown,

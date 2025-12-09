@@ -32,7 +32,5 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:145409309228:ios:815ccdc5d746897a8b6f89</string>
-	<key>DATABASE_URL</key>
-	<string>https://tync-app-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

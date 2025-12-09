@@ -8,7 +8,7 @@ import 'package:tync/features/active_session/presentation/widgets/live_timer_dis
 
 class StopwatchView extends ConsumerWidget {
   final String sessionId;
-  const StopwatchView({required this.sessionId});
+  const StopwatchView({super.key, required this.sessionId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

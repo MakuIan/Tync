@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "145409309228",
+    "firebase_url": "https://tync-app-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "tync-app",
+    "storage_bucket": "tync-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145409309228:android:e8237fd15672f2528b6f89",
+        "android_client_info": {
+          "package_name": "com.example.tync"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145409309228-fe5mt18ri95nt9sdd5pjgbtmkit1s3fq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tync",
+            "certificate_hash": "94bce0de35074abc4ef74b0f426782adb57c898f"
+          }
+        },
+        {
+          "client_id": "145409309228-3a4lpc0emrb52ec0b9krnlg78p17f7v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuQedlKC_H3iekdmvnWRE8uXJ4K1DomA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145409309228-3a4lpc0emrb52ec0b9krnlg78p17f7v9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "145409309228-bi7qf3adth7gor2gbm071sprmathm6eu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tync"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
