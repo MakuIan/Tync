@@ -1,7 +1,6 @@
 // createSession, watchMySession, deleteSession
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:tync/features/sessions/domain/session_model.dart';
 
@@ -37,7 +36,7 @@ class SessionRepository {
     );
   }
 
-  Future<String> createSession(String uid) async {
+  Future<String> createSession(String uid, {String name = 'Training'}) async {
     logger.i("🟡 REPO: createSession gestartet für User $uid");
     try {
       logger.i("🟡 REPO: DB Instanz ist: $_db");
@@ -45,13 +44,10 @@ class SessionRepository {
       final ref = _db.ref('sessions').push();
       logger.i('🟡 REPO: Neue Key generiert: ${ref.key}');
 
-      final timeString = DateFormat('HH:mm').format(DateTime.now());
-      final dateString = DateFormat('dd:mm').format(DateTime.now());
-
       await ref.set({
         'ownerId': uid,
         'createdAt': ServerValue.timestamp,
-        'name': 'Training $dateString ($timeString)',
+        'name': name,
         'tools': {
           'stopwatch': {'isRunning': false, 'startTime': 0},
           'counter': {'count': 0},
@@ -68,5 +64,21 @@ class SessionRepository {
 
   Future<void> deleteSession(String sessionId) async {
     await _db.ref('sessions/$sessionId').remove();
+  }
+
+  Stream<SessionModel?> watchSessionById(String sessionId) {
+    return _db.ref('sessions/$sessionId').onValue.map((event) {
+      final value = event.snapshot.value;
+
+      if (value == null) return null;
+
+      try {
+        final map = value as Map<dynamic, dynamic>;
+        return SessionModel.fromSnapshot(event.snapshot.key!, map);
+      } catch (e) {
+        logger.i('Error when loading session $sessionId: $e');
+        return null;
+      }
+    });
   }
 }

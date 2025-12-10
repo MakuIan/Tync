@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart'; // Required for context.pushNamed
@@ -10,6 +8,7 @@ import 'package:tync/core/constants/app_text_styles.dart';
 import 'package:tync/core/constants/app_colors.dart';
 import 'package:tync/features/sessions/data/session_repository.dart';
 import 'package:tync/features/sessions/domain/session_model.dart';
+import 'package:tync/features/sessions/presentation/create_session_dialog.dart';
 
 final userSessionsProvider = StreamProvider.family<List<SessionModel>, String>((
   ref,
@@ -22,6 +21,38 @@ Logger logger = Logger(printer: PrettyPrinter(methodCount: 0));
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
+
+  Future<void> _showCreateSessionDialog(
+    BuildContext context,
+    WidgetRef ref,
+    String uid,
+  ) async {
+    final String? enteredName = await showDialog<String>(
+      context: context,
+      builder: (context) => const CreateSessionDialog(),
+    );
+
+    if (enteredName != null) {
+      try {
+        final repo = ref.read(sessionRepositoryProvider);
+        final newId = await repo.createSession(uid, name: enteredName);
+
+        if (context.mounted) {
+          context.pushNamed(
+            RouteNames.session,
+            pathParameters: {'sessionId': newId},
+          );
+        }
+      } catch (e) {
+        logger.e('Error when creating session', error: e);
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error when creating session: $e')),
+          );
+        }
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -48,40 +79,10 @@ class DashboardScreen extends ConsumerWidget {
           ),
         ],
       ),
-
+      //Start new Session Button
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          logger.i("🔴 TEST: Button wurde geklickt!");
-          try {
-            final authState = ref.read(authStateChangesProvider);
-            logger.i("🔴 TEST: User ID ist: ${authState.value?.uid}");
-            final repo = ref.read(sessionRepositoryProvider);
-            final newId = await repo.createSession(user.uid);
-            await repo.createSession(user.uid);
-            if (context.mounted) {
-              context.pushNamed(
-                RouteNames.session,
-                pathParameters: {'sessionId': newId},
-              );
-            }
-          } catch (e) {
-            logger.i("🔴 TEST FEHLER: $e");
-            if (context.mounted) {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Error'),
-                  content: Text('Cannot create Sessoion:\n$e'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: const Text('OK'),
-                    ),
-                  ],
-                ),
-              );
-            }
-          }
+          _showCreateSessionDialog(context, ref, user.uid);
         },
         backgroundColor: AppColors.primary,
         label: const Text('Start New Session'),
@@ -141,7 +142,6 @@ class _SessionCard extends ConsumerWidget {
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             color: AppColors.primary.withValues(alpha: 0.1),
-
             shape: BoxShape.circle,
           ),
           child: const Icon(
