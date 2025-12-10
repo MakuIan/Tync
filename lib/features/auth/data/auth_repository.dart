@@ -7,12 +7,7 @@ import 'package:logger/logger.dart';
 
 class AuthRepository {
   final FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-    clientId: kIsWeb
-        ? "145409309228-3a4lpc0emrb52ec0b9krnlg78p17f7v9.apps.googleusercontent.com"
-        : null,
-    scopes: ['email', 'https://www.googleapis.com/auth/contacts.readonly'],
-  );
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   final Logger _logger = Logger(printer: PrettyPrinter(methodCount: 0));
 
