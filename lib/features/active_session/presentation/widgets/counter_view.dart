@@ -5,6 +5,11 @@ import 'package:tync/core/constants/app_text_styles.dart';
 import 'package:tync/features/tools/data/tools_repository.dart';
 import 'big_button.dart';
 
+final counterStreamProvider = StreamProvider.family.autoDispose(
+  (ref, String sessionId) =>
+      ref.watch(toolsRepositoryProvider).streamCounter(sessionId),
+);
+
 class CounterView extends ConsumerWidget {
   final String sessionId;
   const CounterView({super.key, required this.sessionId});
@@ -12,9 +17,7 @@ class CounterView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final repo = ref.watch(toolsRepositoryProvider);
-    final stream = ref.watch(
-      StreamProvider((ref) => repo.streamCounter(sessionId)),
-    );
+    final stream = ref.watch(counterStreamProvider(sessionId));
     return stream.when(
       data: (model) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,12 +44,12 @@ class CounterView extends ConsumerWidget {
                 iconColor: Colors.white,
                 onTap: () => repo.incrementCounter(sessionId, 1),
               ),
-              const SizedBox(height: 20),
-              TextButton(
-                onPressed: () => repo.resetCounter(sessionId),
-                child: const Text('Reset to 0'),
-              ),
             ],
+          ),
+          const SizedBox(height: 20),
+          TextButton(
+            onPressed: () => repo.resetCounter(sessionId),
+            child: const Text('Reset to 0'),
           ),
         ],
       ),

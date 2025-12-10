@@ -6,6 +6,11 @@ import 'package:tync/features/active_session/presentation/widgets/big_button.dar
 import 'package:tync/features/tools/data/tools_repository.dart';
 import 'package:tync/features/active_session/presentation/widgets/live_timer_display.dart';
 
+final stopwatchStreamProvider = StreamProvider.family.autoDispose(
+  (ref, String sessionId) =>
+      ref.watch(toolsRepositoryProvider).streamStopwatch(sessionId),
+);
+
 class StopwatchView extends ConsumerWidget {
   final String sessionId;
   const StopwatchView({super.key, required this.sessionId});
@@ -13,9 +18,7 @@ class StopwatchView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final repo = ref.watch(toolsRepositoryProvider);
-    final stream = ref.watch(
-      StreamProvider((ref) => repo.streamStopwatch(sessionId)),
-    );
+    final stream = ref.watch(stopwatchStreamProvider(sessionId));
 
     return stream.when(
       data: (model) {

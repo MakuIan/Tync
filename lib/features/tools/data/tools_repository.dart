@@ -62,7 +62,7 @@ class ToolsRepository {
   Future<void> startTimer(String sessionId, int durationMs) async {
     final int targetTime = DateTime.now().millisecondsSinceEpoch + durationMs;
 
-    await _db.ref('sessions/$sessionId/tools/stopwatch').set({
+    await _db.ref('sessions/$sessionId/tools/timer').set({
       'isRunning': true,
       'endTime': targetTime,
       'originalDuration': durationMs,

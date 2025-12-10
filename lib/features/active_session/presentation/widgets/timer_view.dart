@@ -6,6 +6,11 @@ import 'package:tync/features/active_session/presentation/widgets/preset_button.
 import 'package:tync/features/tools/data/tools_repository.dart';
 import 'package:tync/core/constants/app_colors.dart';
 
+final timerStreamProvider = StreamProvider.family.autoDispose(
+  (ref, String sessionId) =>
+      ref.watch(toolsRepositoryProvider).streamTimer(sessionId),
+);
+
 class TimerView extends ConsumerWidget {
   final String sessionId;
   const TimerView({super.key, required this.sessionId});
@@ -13,9 +18,7 @@ class TimerView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final repo = ref.watch(toolsRepositoryProvider);
-    final stream = ref.watch(
-      StreamProvider((ref) => repo.streamTimer(sessionId)),
-    );
+    final stream = ref.watch(timerStreamProvider(sessionId));
     return stream.when(
       data: (model) {
         return Column(
@@ -28,7 +31,10 @@ class TimerView extends ConsumerWidget {
             const SizedBox(height: 20),
 
             LiveTimerDisplay(
-              targetTime: model.endTime,
+              key: ValueKey(model.isRunning),
+              targetTime: model.isRunning
+                  ? model.endTime
+                  : DateTime.now().millisecondsSinceEpoch,
               isRunning: model.isRunning,
               isCountDown: false,
             ),
@@ -41,9 +47,7 @@ class TimerView extends ConsumerWidget {
                 alignment: WrapAlignment.center,
                 children: [
                   PresetButton('30s', () => repo.startTimer(sessionId, 30000)),
-                  PresetButton('60', () => repo.startTimer(sessionId, 60000)),
-                  PresetButton('90', () => repo.startTimer(sessionId, 90000)),
-                  PresetButton('2m', () => repo.startTimer(sessionId, 120000)),
+                  PresetButton('60s', () => repo.startTimer(sessionId, 60000)),
                 ],
               ),
             ] else

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tync/core/constants/app_colors.dart';
-import 'package:tync/core/constants/app_text_styles.dart';
 import 'package:tync/features/active_session/presentation/widgets/counter_view.dart';
 import 'package:tync/features/active_session/presentation/widgets/stopwatch_view.dart';
 import 'package:tync/features/active_session/presentation/widgets/timer_view.dart';
